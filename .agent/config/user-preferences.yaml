@@ -11,6 +11,9 @@ language: ko
 date_format: ISO
 timezone: Asia/Seoul
 
+# Default root directory for new projects
+projects_root: /Users/resmile/project
+
 # Default CLI (for single tasks)
 default_cli: gemini
 

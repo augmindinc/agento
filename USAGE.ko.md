@@ -171,6 +171,7 @@ Antigravity가 자동으로 요청을 스킬에 매칭시킵니다. 스킬을 �
 | backend-agent | API, 데이터베이스, 인증 | API 엔드포인트, 모델, 테스트 |
 | mobile-agent | 모바일 앱, iOS/Android | Flutter 화면, 상태 관리 |
 | qa-agent | "보안 검토", "감사" | 우선순위가 있는 QA 리포트 |
+| uiux-designer-agent | "디자인해줘", "와이어프레임", "UI/UX" | 디자인 명세서, 와이어프레임, 목업 |
 | debug-agent | 버그 리포트, 에러 메시지 | 수정된 코드, 회귀 테스트 |
 | orchestrator | CLI 서브에이전트 실행 | `.agent/results/`에 결과 저장 |
 | commit | "commit", "커밋해줘" | Git 커밋 (기능별 자동 분리) |

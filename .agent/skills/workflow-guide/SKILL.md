@@ -1,6 +1,6 @@
 ---
 name: multi-agent-workflow
-description: Guide for coordinating PM, Frontend, Backend, Mobile, and QA agents on complex projects via CLI
+description: Guide for coordinating PM, Frontend, Backend, Mobile, UI/UX, and QA agents on complex projects via CLI
 ---
 
 # Multi-Agent Workflow Guide
@@ -8,7 +8,7 @@ description: Guide for coordinating PM, Frontend, Backend, Mobile, and QA agents
 ## When to use
 
 - Complex feature spanning multiple domains (full-stack, mobile)
-- Coordination needed between frontend, backend, mobile, and QA
+- Coordination needed between frontend, backend, mobile, ui/ux, and QA
 - User wants step-by-step guidance for multi-agent coordination
 
 ## When NOT to use
@@ -31,7 +31,7 @@ description: Guide for coordinating PM, Frontend, Backend, Mobile, and QA agents
 
 ### Step 1: Plan with PM Agent
 
-PM Agent analyzes requirements, selects tech stack, creates task breakdown with priorities.
+PM Agent analyzes requirements, selects tech stack, creates task breakdown with priorities. UI/UX Designer Agent creates wireframes and design systems.
 
 ### Step 2: Spawn Agents by Priority
 

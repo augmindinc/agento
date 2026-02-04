@@ -20,7 +20,6 @@ Google Antigravity를 위한 궁극의 멀티 에이전트 프레임워크.
 
 ## 목차
 
-- [아키텍처](#아키텍처)
 - [이게 뭔가요?](#이게-뭔가요)
 - [빠른 시작](#빠른-시작)
 - [동작 원리](#동작-원리)
@@ -44,48 +43,10 @@ Google Antigravity를 위한 궁극의 멀티 에이전트 프레임워크.
 | **Backend Agent** | FastAPI, PostgreSQL, JWT 인증 |
 | **Mobile Agent** | Flutter 크로스 플랫폼 개발 |
 | **QA Agent** | OWASP Top 10 보안, 성능, 접근성 감사 |
+| **UI/UX Designer** | 사용자 경험 연구, 와이어프레임, 고충실도 디자인, 디자인 시스템 |
 | **Debug Agent** | 버그 진단, 근본 원인 분석, 회귀 테스트 |
 | **Orchestrator** | CLI 기반 병렬 에이전트 실행 + Serena Memory |
 | **Commit** | Conventional Commits 규칙 기반 커밋 관리 |
-
-## 아키텍처
-
-```mermaid
-flowchart TD
-    subgraph Workflows["워크플로우"]
-        direction TB
-        W1["/coordinate"]
-        W2["/orchestrate"]
-        W3["/plan"]
-        W4["/review"]
-        W5["/debug"]
-    end
-
-    subgraph Orchestration["오케스트레이션"]
-        direction TB
-        PM[pm-agent]
-        WF[workflow-guide]
-        ORC[orchestrator]
-    end
-
-    subgraph Domain["도메인 에이전트"]
-        direction TB
-        FE[frontend-agent]
-        BE[backend-agent]
-        MB[mobile-agent]
-    end
-
-    subgraph Quality["품질"]
-        direction TB
-        QA[qa-agent]
-        DBG[debug-agent]
-    end
-
-    Workflows --> Orchestration
-    Orchestration --> Domain
-    Domain --> Quality
-    Quality --> CMT([commit])
-```
 
 ## 빠른 시작
 
@@ -93,16 +54,12 @@ flowchart TD
 
 - **Google Antigravity** (2026+)
 - **Bun** (CLI 및 대시보드용)
-- **uv** (Serena 설정용)
 
 ### 옵션 1: 대화형 CLI (권장)
 
 ```bash
 # bun이 없으면 먼저 설치:
 # curl -fsSL https://bun.sh/install | bash
-
-# uv가 없으면 먼저 설치:
-# curl -LsSf https://astral.sh/uv/install.sh | sh
 
 bunx oh-my-ag
 ```
@@ -486,6 +443,11 @@ bunx oh-my-ag dashboard:web
 **발동 조건**: "보안 검토해줘", "성능 확인", "감사해줘"
 **검사 항목**: OWASP Top 10, Lighthouse, WCAG 2.1 AA
 
+### uiux-designer-agent
+
+**발동 조건**: "디자인해줘", "와이어프레임", "UI/UX", "시각적 분석"
+**산출물**: 디자인 명세서, 와이어프레임, 고충실도 목업 (텍스트/이미지 설명)
+
 ### debug-agent
 
 **발동 조건**: 버그 리포트, 에러 메시지, 크래시
@@ -514,6 +476,7 @@ bunx oh-my-ag stats --reset  # 메트릭 초기화
 bunx oh-my-ag retro          # 세션 회고 (배운 점 & 다음 단계)
 bunx oh-my-ag memory:init    # Serena 메모리 스키마 초기화
 bunx oh-my-ag dashboard      # 터미널 실시간 대시보드
+bunx oh-my-ag dashboard:web  # 웹 대시보드 (http://localhost:9847)
 bunx oh-my-ag dashboard:web  # 웹 대시보드 (http://localhost:9847)
 bunx oh-my-ag bridge         # MCP stdio - SSE 브릿지 (Serena용)
 bunx oh-my-ag help           # 도움말 표시

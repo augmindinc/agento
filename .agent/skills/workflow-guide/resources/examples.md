@@ -8,12 +8,12 @@
 
 ```
 Step 1: PM Agent plans the project
-  -> 5 tasks: auth API, CRUD API, login UI, todo UI, QA review
+  -> 6 tasks: auth API, CRUD API, login UI, todo UI, design mockup, QA review
 
 Step 2: Spawn Priority 1 agents via CLI
   # Run in parallel using background processes
   oh-my-ag agent:spawn backend "JWT authentication API + TODO CRUD" session-id ./backend &
-  oh-my-ag agent:spawn frontend "Login/Register UI" session-id ./frontend &
+  oh-my-ag agent:spawn uiux "Design systems and login UI mockups" session-id ./design &
   wait
 
 Step 3: Monitor progress
@@ -21,7 +21,7 @@ Step 3: Monitor progress
   - Verify API contracts align between backend/frontend
 
 Step 4: Spawn Priority 2 after P1 completes
-  .agent/skills/orchestrator/scripts/spawn-agent.sh frontend "TODO List UI" ./frontend
+  oh-my-ag agent:spawn frontend "Login/Register UI and TODO List UI based on design" session-id ./frontend
 
 Step 5: Spawn Priority 3
   .agent/skills/orchestrator/scripts/spawn-agent.sh qa "Security + Performance review" .

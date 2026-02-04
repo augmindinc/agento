@@ -38,40 +38,37 @@ Orchestrate 6 specialized domain agents (PM, Frontend, Backend, Mobile, QA, Debu
 ## Architecture
 
 ```mermaid
-flowchart TD
-    subgraph Workflows["Workflows"]
-        direction TB
-        W1["/coordinate"]
-        W2["/orchestrate"]
-        W3["/plan"]
-        W4["/review"]
-        W5["/debug"]
+flowchart TB
+    subgraph Coordination["🎯 Coordination"]
+        PM[pm-agent<br/>Task Decomposition]
+        WF[workflow-guide<br/>Manual Orchestration]
+        ORC[orchestrator<br/>Parallel Execution]
     end
 
-    subgraph Orchestration["Orchestration"]
-        direction TB
-        PM[pm-agent]
-        WF[workflow-guide]
-        ORC[orchestrator]
+    subgraph Domain["💻 Domain Agents"]
+        FE[frontend-agent<br/>React/Next.js]
+        BE[backend-agent<br/>FastAPI/Python]
+        MB[mobile-agent<br/>Flutter/Dart]
     end
 
-    subgraph Domain["Domain Agents"]
-        direction TB
-        FE[frontend-agent]
-        BE[backend-agent]
-        MB[mobile-agent]
+    subgraph Quality["✅ Quality"]
+        QA[qa-agent<br/>Security/A11y/Perf]
+        UI[uiux-designer-agent<br/>User Flows/Mockups]
+        DBG[debug-agent<br/>Bug Fixing]
     end
 
-    subgraph Quality["Quality"]
-        direction TB
-        QA[qa-agent]
-        DBG[debug-agent]
+    subgraph Utility["🔧 Utility"]
+        CMT[commit<br/>Conventional Commits]
     end
 
-    Workflows --> Orchestration
-    Orchestration --> Domain
-    Domain --> Quality
-    Quality --> CMT([commit])
+    PM -->|API Contracts| FE & BE & MB
+    ORC -->|Spawns| FE & BE & MB
+    WF -->|Coordinates| FE & BE & MB
+    FE & BE & MB -->|Review| QA
+    FE -->|UX Audit| UI
+    QA & UI -->|Issues| DBG
+    DBG -->|Fix| FE & BE & MB
+    FE & BE & MB -->|Changes| CMT
 ```
 
 ## What Is This?
@@ -86,6 +83,7 @@ A collection of **Antigravity Skills** enabling collaborative multi-agent develo
 | **Backend Agent** | FastAPI, PostgreSQL, JWT authentication |
 | **Mobile Agent** | Flutter cross-platform development |
 | **QA Agent** | OWASP Top 10 security, performance, accessibility |
+| **UI/UX Designer** | User research, wireframing, hi-fi design, design systems |
 | **Debug Agent** | Bug diagnosis, root cause analysis, regression tests |
 | **Orchestrator** | CLI-based parallel agent execution with Serena Memory |
 | **Commit** | Conventional Commits with project-specific rules |
@@ -96,16 +94,12 @@ A collection of **Antigravity Skills** enabling collaborative multi-agent develo
 
 - **Google Antigravity** (2026+)
 - **Bun** (for CLI and dashboards)
-- **uv** (for Serena setup)
 
 ### Option 1: Interactive CLI (Recommended)
 
 ```bash
 # Install bun if you don't have it:
 # curl -fsSL https://bun.sh/install | bash
-
-# Install uv if you don't have it:
-# curl -LsSf https://astral.sh/uv/install.sh | sh
 
 bunx oh-my-ag
 ```
@@ -478,6 +472,11 @@ Each skill provides domain-specific resources:
 **Triggers**: "review security", "check performance", "audit"
 **Checks**: OWASP Top 10, Lighthouse, WCAG 2.1 AA
 
+### uiux-designer-agent
+
+**Triggers**: "design this", "wireframe", "UI/UX", "visual analysis"
+**Output**: Design specs, wireframes, high-fidelity mockups (text/image)
+
 ### debug-agent
 
 **Triggers**: Bug reports, error messages, crashes
@@ -506,6 +505,7 @@ bunx oh-my-ag stats --reset  # Reset metrics
 bunx oh-my-ag retro          # Session retrospective (learnings & next steps)
 bunx oh-my-ag memory:init    # Initialize Serena memory schema
 bunx oh-my-ag dashboard      # Terminal real-time dashboard
+bunx oh-my-ag dashboard:web  # Web dashboard (http://localhost:9847)
 bunx oh-my-ag dashboard:web  # Web dashboard (http://localhost:9847)
 bunx oh-my-ag bridge         # Bridge MCP stdio to SSE (for Serena)
 bunx oh-my-ag help           # Show help

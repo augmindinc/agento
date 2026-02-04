@@ -13,6 +13,12 @@
 
 Follow these steps in order (adjust depth by difficulty).
 
+## Step 0.1: Workspace Initialization
+- If the user provided a project name (e.g., "MyNewApp"), assume the target path is `/Users/resmile/project/{MyNewApp}`.
+- Create the target directory if it doesn't exist.
+- Copy essential `.agent` metadata (or at least provide a README) to the new directory.
+- All subsequent files (`plan.json`, `task-board.md`) must be saved to the **target directory**.
+
 ## Step 1: Analyze Requirements
 - Parse user request into concrete requirements
 - Identify explicit and implicit features

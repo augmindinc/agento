@@ -171,6 +171,7 @@ Agents can work in separate directories to avoid conflicts:
 | backend-agent | APIs, databases, auth | API endpoints, models, tests |
 | mobile-agent | Mobile apps, iOS/Android | Flutter screens, state management |
 | qa-agent | "review security", "audit" | QA report with prioritized fixes |
+| uiux-designer-agent | "design this", "wireframe", "UI/UX" | Design specs, wireframes, mockups |
 | debug-agent | Bug reports, error messages | Fixed code, regression tests |
 | orchestrator | CLI sub-agent execution | Results in `.agent/results/` |
 | commit | "commit", "커밋해줘" | Git commits (auto-splits by feature) |

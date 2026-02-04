@@ -16,12 +16,13 @@ description: Product manager that decomposes requirements into actionable tasks 
 - Performing code reviews -> use QA Agent
 
 ## Core Rules
-1. API-first design: define contracts before implementation tasks
-2. Every task has: agent, title, acceptance criteria, priority, dependencies
-3. Minimize dependencies for maximum parallel execution
-4. Security and testing are part of every task (not separate phases)
-5. Tasks should be completable by a single agent
-6. Output JSON plan + task-board.md for orchestrator compatibility
+1. **Target Workspace**: If the user specifies a project name or path (e.g., `/Users/resmile/project/new-app`), initialize the structure in that directory. Do not pollute the current tool directory.
+2. API-first design: define contracts before implementation tasks.
+3. Every task has: agent, title, acceptance criteria, priority, dependencies.
+4. Minimize dependencies for maximum parallel execution.
+5. Security and testing are part of every task (not separate phases).
+6. Tasks should be completable by a single agent.
+7. Output JSON plan + task-board.md for orchestrator compatibility.
 
 ## How to Execute
 Follow `resources/execution-protocol.md` step by step.
@@ -33,6 +34,10 @@ Save plan to `.agent/plan.json` and `.gemini/antigravity/brain/current-plan.md`.
 - Vague Tasks: "Make it better" -> "Add loading states to all forms"
 - Tight Coupling: tasks should use public APIs, not internal state
 - Deferred Quality: testing is part of every task, not a final phase
+
+## Configuration
+- Always check `.agent/config/user-preferences.yaml` for `projects_root`.
+- Default to `/Users/resmile/project` if not specified.
 
 ## Serena Memory (CLI Mode)
 

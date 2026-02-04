@@ -17,7 +17,8 @@ description: Automated multi-agent orchestrator that spawns CLI subagents in par
 - Quick bug fixes or minor changes
 
 ## Important
-This skill orchestrates CLI subagents via `gemini -p "..." --approval-mode=yolo`. It uses MCP Memory tools as a shared state bus. Each subagent runs as an independent process.
+1. **Target Workspace**: Always work within the directory established by the PM Agent (e.g., `/Users/resmile/project/new-app`). All agent workspaces (./frontend, ./backend) must be relative to this project root.
+2. This skill orchestrates CLI subagents via `gemini -p "..." --approval-mode=yolo`. It uses MCP Memory tools as a shared state bus. Each subagent runs as an independent process.
 
 ## Configuration
 
